@@ -1,0 +1,23 @@
+services:
+  rpilocator:
+    container_name: rpilocator
+    image: cdevoogd/rpilocator-ntfy
+    restart: unless-stopped
+    environment:
+      # REQUIRED
+      # Your topic ID on ntfy.sh. This should be subscribed to on your phone.
+      NTFY_TOPIC: ""
+      # OPTIONAL
+      # - FEED_URL: If you want to filter notifications, set filters on rpilocator.com and set the
+      #   URL here. (e.g. https://rpilocator.com/feed/?country=US&cat=CM4)
+      #
+      # - NTFY_BASE_URL: If you want to use a private instance of ntfy, set this to your URL (don't
+      #   include the trailing slash).
+      #
+      # - NTFY_PRIORITY: Customize the priority of your notifications. For priority names see:
+      #   https://docs.ntfy.sh/publish/?h=priority#message-priority
+      #
+      # - NTFY_EMOJI: Customize the emoji sent in the notification. For valid emojis see:
+      #   https://docs.ntfy.sh/emojis/
+      #
+      # - INITIAL_NOTIFICATION: Set to 'true' if you want notifications sent on the first feed check
