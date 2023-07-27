@@ -20,4 +20,6 @@ services:
       # - NTFY_EMOJI: Customize the emoji sent in the notification. For valid emojis see:
       #   https://docs.ntfy.sh/emojis/
       #
+      # - MESSAGE_TITLE: Customize the title of the notification
+      #
       # - INITIAL_NOTIFICATION: Set to 'true' if you want notifications sent on the first feed check

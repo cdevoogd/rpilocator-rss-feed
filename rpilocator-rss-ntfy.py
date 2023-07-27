@@ -14,7 +14,7 @@ NTFY_PRIORITY = os.getenv("NTFY_PRIORITY", "default")
 NTFY_EMOJI = os.getenv("NTFY_EMOJI", "white_check_mark")
 INITIAL_NOTIFICATION = os.getenv("INITIAL_NOTIFICATION", "False").lower() == "true"
 
-MESSAGE_TITLE = "xlocator Stock Alert"
+MESSAGE_TITLE = os.getenv("MESSAGE_TITLE", "RPILocator Stock Alert")
 USER_AGENT = "xlocator feed alert"
 
 
