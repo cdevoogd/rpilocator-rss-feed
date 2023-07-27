@@ -1,7 +1,6 @@
 import requests
 import feedparser
 import time
-import json
 
 # Feed URL
 FEED_URL = "https://rpilocator.com/feed/"
