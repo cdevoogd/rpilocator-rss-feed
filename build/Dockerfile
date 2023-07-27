@@ -8,4 +8,4 @@ RUN <<EOT
     pip3 install -r requirements.txt
 EOT
 
-CMD ["python3", "rpilocator-rss-ntfy.py"]
+CMD ["python3", "-u", "rpilocator-rss-ntfy.py"]

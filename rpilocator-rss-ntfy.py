@@ -46,6 +46,18 @@ def sendMessage(message):
         pass
 
 
+print("Starting rpilocator")
+print("Configuration")
+print(f"  FEED_URL: {FEED_URL}")
+print(f"  NTFY_BASE_URL: {NTFY_BASE_URL}")
+print(f"  NTFY_TOPIC: {NTFY_TOPIC}")
+print(f"  NTFY_PRIORITY: {NTFY_PRIORITY}")
+print(f"  NTFY_EMOJI: {NTFY_EMOJI}")
+print(f"  INITIAL_NOTIFICATION: {INITIAL_NOTIFICATION}")
+print(f"  MESSAGE_TITLE: {MESSAGE_TITLE}")
+print(f"  USER_AGENT: {USER_AGENT}")
+print()
+
 if not NTFY_TOPIC:
     print("NTFY_TOPIC is required but not set")
     sys.exit(1)
