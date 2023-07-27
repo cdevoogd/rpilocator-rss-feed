@@ -1,22 +1,19 @@
+#!/usr/bin/env python3
+
 import requests
 import feedparser
 import time
+import os
+import sys
 
-# Feed URL
-FEED_URL = "https://rpilocator.com/feed/"
-# FEED_URL = 'https://hwlocator.com/feed/'
+FEED_URL = os.getenv("FEED_URL", "https://rpilocator.com/feed/")
+NTFY_BASE_URL = os.getenv("NTFY_BASE_URL", "https://ntfy.sh")
+NTFY_TOPIC = os.getenv("NTFY_TOPIC")
+NTFY_PRIORITY = os.getenv("NTFY_PRIORITY", "default")
+NTFY_EMOJI = os.getenv("NTFY_EMOJI", "white_check_mark")
+INITIAL_NOTIFICATION = os.getenv("INITIAL_NOTIFICATION", "False").lower() == "true"
 
-# ntfy settings
-NTFY_BASE_URL = "https://ntfy.sh"
-NTFY_TOPIC = "<your topic here>"
-NTFY_PRIORITY = "default"
-NTFY_EMOJI = "white_check_mark"
-INITIAL_NOTIFICATION = False
-
-# Customize the message title
 MESSAGE_TITLE = "xlocator Stock Alert"
-
-# User Agent
 USER_AGENT = "xlocator feed alert"
 
 
@@ -48,6 +45,10 @@ def sendMessage(message):
         print(e)
         pass
 
+
+if not NTFY_TOPIC:
+    print("NTFY_TOPIC is required but not set")
+    sys.exit(1)
 
 # Set control to blank list
 control = []
