@@ -4,6 +4,7 @@ import requests
 import feedparser
 import time
 import os
+import signal
 import sys
 
 FEED_URL = os.getenv("FEED_URL", "https://rpilocator.com/feed/")
@@ -46,6 +47,11 @@ def sendMessage(message):
         pass
 
 
+def handle_shutdown(signal, *_):
+    print(f"Caught signal {signal}, shutting down")
+    sys.exit(1)
+
+
 print("Starting rpilocator")
 print("Configuration")
 print(f"  FEED_URL: {FEED_URL}")
@@ -61,6 +67,9 @@ print()
 if not NTFY_TOPIC:
     print("NTFY_TOPIC is required but not set")
     sys.exit(1)
+
+# Catch SIGTERM so that we can shut down when `docker stop` is called.
+signal.signal(signal.SIGTERM, handle_shutdown)
 
 # Set control to blank list
 control = []
